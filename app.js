@@ -9,8 +9,8 @@
 const APP_STORE_URL = null;
 
 // ── Waitlist backend (Supabase, insert-only under RLS) ────────────────────
-const SUPABASE_URL = "https://cplvfccjhsctjxequhww.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_1diXS18ySRzbgeMCjoD5Zg_kMNPusdV";
+const SUPABASE_URL = "https://pcupaezqkvgetnuwrtcw.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_9qztrf-FJOtSv9DBNbMQAA_ZqSpZi8N";
 
 async function joinWaitlist(email) {
   const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
@@ -30,7 +30,7 @@ async function joinWaitlist(email) {
 const MSG = {
   invalid: "That doesn't look like an email. Check it.",
   loading: "Adding you…",
-  success: "You're on the list. We'll say one thing when it ships.",
+  success: "You're on the list. The story, the date, the link. Then we stop.",
   error: "Didn't go through. Try again in a minute.",
 };
 

@@ -1,5 +1,5 @@
 -- SetOne waitlist — run once in the Supabase SQL editor
--- Project: cplvfccjhsctjxequhww
+-- Project: pcupaezqkvgetnuwrtcw (applied Aug 11, 2026 via MCP)
 -- Insert-only for the public. The anon role can join, never read the list.
 
 create table public.waitlist (
