@@ -315,6 +315,8 @@ a { color: inherit; }
   font-size: 0.8rem; color: var(--cream-muted);
   padding: 2px 4px 0;
 }
+.la-rest-label { display: inline-flex; align-items: center; gap: 5px; }
+.la-timer { flex: none; }
 .la-hr { color: #79b284; font-weight: 600; }
 .closing-note {
   margin-top: 12px; font-size: 13px; text-align: center;
