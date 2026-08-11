@@ -261,93 +261,111 @@ a { color: inherit; }
 
 .live-activity {
   margin-top: auto;
-  background: rgba(28, 46, 34, 0.9);
+  background: rgba(23, 36, 28, 0.94);
   border: 1px solid rgba(255, 247, 233, 0.1);
-  border-radius: 20px;
-  padding: 14px 15px;
+  border-radius: 22px;
+  padding: 13px 13px 11px;
   backdrop-filter: blur(6px);
+  display: flex; flex-direction: column; gap: 10px;
 }
-.la-head { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; }
-.la-icon { border-radius: 6px; }
-.la-app { font-weight: 600; }
-.la-meta { margin-left: auto; font-family: var(--mono); color: var(--teal); font-size: 0.74rem; }
-.la-body {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 10px; margin: 12px 0 12px;
+.la-head { display: flex; align-items: center; gap: 8px; }
+.la-lift { font-weight: 700; font-size: 0.98rem; letter-spacing: -0.01em; }
+.la-dots { margin-left: auto; display: inline-flex; gap: 4px; }
+.la-dots i {
+  width: 6px; height: 6px; border-radius: 50%;
+  border: 1px solid var(--cream-muted); display: inline-block;
 }
-.la-lift { font-weight: 700; font-size: 1.02rem; letter-spacing: -0.01em; }
-.la-load { font-family: var(--mono); color: var(--cream-muted); font-size: 0.9rem; white-space: nowrap; }
+.la-dots i.done { background: var(--cream-muted); border-color: transparent; }
+.la-dots i.now { background: var(--rust); border-color: transparent; }
+.la-meta { color: var(--cream-muted); font-size: 0.72rem; white-space: nowrap; }
+.la-row { display: flex; align-items: center; gap: 10px; }
+.la-circle {
+  flex: none; width: 30px; height: 30px; border-radius: 50%;
+  background: rgba(255, 247, 233, 0.09);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1rem; color: var(--cream);
+}
+.la-load {
+  flex: 1; text-align: center; white-space: nowrap;
+}
+.la-weight { font-size: 1.35rem; font-weight: 600; }
+.la-sub { font-family: var(--mono); font-size: 0.85rem; color: var(--cream); }
+.la-range { font-size: 0.72rem; color: var(--cream-muted); margin-left: 4px; }
 .la-log {
-  width: 100%; border: 0; cursor: default;
+  flex: 1;
   background: var(--rust); color: var(--cream);
-  font: inherit; font-weight: 700; font-size: 0.95rem;
-  padding: 11px; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center; gap: 6px;
+  font-weight: 700; font-size: 0.92rem; text-align: center;
+  padding: 10px 0; border-radius: 999px;
 }
 .la-rest {
   display: flex; align-items: center; gap: 8px;
-  font-size: 13px; color: var(--cream-muted, #b8b3a4);
-  margin: 6px 0 8px;
+  font-size: 0.8rem; color: var(--cream-muted);
+  padding: 2px 4px 0;
 }
 .la-hr { color: #79b284; font-weight: 600; }
 .closing-note {
   margin-top: 12px; font-size: 13px; text-align: center;
   color: var(--cream-muted, #b8b3a4);
 }
-.coach-line {
-  font-size: 0.86rem; color: var(--cream);
-  display: flex; align-items: flex-start; gap: 9px;
-  padding: 2px 4px 4px;
-}
-.coach-dot {
-  flex: none; width: 7px; height: 7px; border-radius: 50%;
-  background: var(--amber); margin-top: 7px;
-  box-shadow: 0 0 0 4px rgba(217, 164, 65, 0.18);
-}
 
-/* Apple Watch mockup: rounded-square body, side crown, the wrist UI
-   with the recovered-green heart rate. Overlaps the phone's lower left. */
+/* Apple Watch mockup: rounded-square body, side crown, the real wrist
+   UI (steppers, stacked weight/reps, full-width log). Kisses the
+   phone's corner rather than covering it. */
 .watch {
   position: absolute;
-  bottom: -14px;
+  bottom: -18px;
   left: 50%;
-  transform: translateX(-224px);
-  width: 152px;
-  border-radius: 40px;
+  transform: translateX(-278px);
+  width: 158px;
+  border-radius: 42px;
   padding: 9px;
   background: linear-gradient(160deg, #263a2d, #141f18);
   border: 1px solid rgba(255, 247, 233, 0.16);
   box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.75);
 }
 .watch::before {
-  /* digital crown */
   content: "";
-  position: absolute; right: -4px; top: 34px;
+  position: absolute; right: -4px; top: 36px;
   width: 7px; height: 30px; border-radius: 4px;
   background: #2c4234;
   border: 1px solid rgba(255, 247, 233, 0.18);
 }
 .watch-screen {
-  border-radius: 32px;
+  border-radius: 34px;
   background: #0b1510;
-  aspect-ratio: 1 / 1.21;
-  padding: 16px 13px 13px;
-  display: flex; flex-direction: column; align-items: center; gap: 5px;
+  aspect-ratio: 1 / 1.26;
+  padding: 15px 11px 11px;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
   overflow: hidden;
 }
-.watch-lift { font-weight: 700; font-size: 0.82rem; letter-spacing: -0.01em; }
-.watch-meta { font-family: var(--mono); font-size: 0.66rem; color: var(--teal); }
-.watch-hr { color: #79b284; font-weight: 600; }
-.watch-weight {
-  font-family: var(--mono); font-size: 1.3rem; margin-top: 2px;
+.watch-lift {
+  font-weight: 700; font-size: 0.8rem; letter-spacing: -0.01em;
+  text-align: center; line-height: 1.15;
 }
-.watch-unit { font-size: 0.7rem; color: var(--cream-muted); }
+.watch-meta {
+  font-family: var(--mono); font-size: 0.64rem; color: var(--teal);
+  white-space: nowrap;
+}
+.watch-hr { color: #79b284; font-weight: 600; }
+.watch-row {
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%; gap: 6px;
+}
+.watch-circle {
+  flex: none; width: 24px; height: 24px; border-radius: 50%;
+  background: rgba(255, 247, 233, 0.1);
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; color: var(--cream);
+}
+.watch-val { display: flex; flex-direction: column; align-items: center; line-height: 1.1; }
+.watch-num { font-size: 1.05rem; font-weight: 600; }
+.watch-sub { font-size: 0.56rem; color: var(--cream-muted); font-family: var(--mono); white-space: nowrap; }
 .watch-log {
   margin-top: auto;
   width: 100%;
   background: var(--rust); color: var(--cream);
   font-weight: 700; font-size: 0.74rem; text-align: center;
-  padding: 8px 0; border-radius: 10px;
+  padding: 9px 0; border-radius: 999px;
 }
 
 /* ── Features ───────────────────────────────────────────────────────────── */
