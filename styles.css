@@ -136,13 +136,20 @@ a { color: inherit; }
 }
 
 .hero-title {
-  font-size: clamp(2.4rem, 6vw, 4rem);
-  line-height: 1.04;
+  font-size: clamp(2.1rem, 5.2vw, 3.3rem);
+  line-height: 1.12;
   letter-spacing: -0.03em;
   font-weight: 800;
   margin: 0 0 22px;
 }
-.hero-title-answer { color: var(--rust); }
+.hero-q2 { font-style: italic; color: var(--teal); }
+.hero-title-answer {
+  color: var(--rust);
+  font-size: 0.7em;
+  display: inline-block;
+  margin-top: 0.35em;
+  white-space: nowrap;
+}
 
 .hero-sub {
   font-size: clamp(1.05rem, 1.8vw, 1.2rem);
@@ -432,6 +439,29 @@ a { color: inherit; }
 .detail-key { color: var(--amber); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .detail-val { font-size: 1.02rem; }
 
+/* ── Pledges: the maker & the dogs ──────────────────────────────────────── */
+.pledges { padding: clamp(20px, 3vw, 40px) 0 clamp(40px, 6vw, 72px); }
+.pledge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pledge {
+  padding: 28px 30px 30px;
+  background: var(--surface);
+  border: 1px solid var(--cream-faint);
+  border-radius: var(--radius);
+  transition: border-color 0.25s var(--ease);
+}
+.pledge:hover { border-color: var(--teal); }
+.pledge-kicker {
+  color: var(--amber); font-size: 0.78rem; letter-spacing: 0.08em;
+  text-transform: uppercase; margin: 0 0 14px;
+}
+.pledge-line {
+  margin: 0;
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  line-height: 1.4;
+}
+
 /* ── Closing CTA ────────────────────────────────────────────────────────── */
 .closing {
   padding: clamp(56px, 9vw, 120px) 0;
@@ -484,6 +514,7 @@ a { color: inherit; }
   .hero-visual { order: 2; }
   .feature-grid { grid-template-columns: 1fr; }
   .detail-grid { grid-template-columns: 1fr; }
+  .pledge-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 720px) {
   .watch { display: none; }
