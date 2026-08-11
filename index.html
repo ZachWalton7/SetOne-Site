@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SetOne — Workout Tracker &amp; Plans</title>
+  <meta name="description" content="Answer four questions. Get a program built for your equipment and experience. Log every set with one tap from your lock screen." />
+  <meta name="color-scheme" content="dark" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="SetOne — Workout Tracker & Plans" />
+  <meta property="og:description" content="What do I do at the gym? SetOne tells you. Answer four questions, get a real program, then log it with one tap from your lock screen." />
+  <meta property="og:type" content="website" />
+  <!-- TODO before publish: og:image must be an ABSOLUTE url (link previews
+       ignore relative paths). Swap in the hosted URL, e.g.
+       https://<your-domain>/assets/icon-green-1024.png -->
+  <meta property="og:image" content="assets/icon-green-1024.png" />
+
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="apple-touch-icon" href="assets/icon-green-1024.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#waitlist">Skip to waitlist</a>
+
+  <!-- ── Header ─────────────────────────────────────────────── -->
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#top" aria-label="SetOne home">
+        <img class="brand-mark" src="assets/icon-green-1024.png" width="36" height="36" alt="" />
+        <span class="brand-word">SetOne</span>
+      </a>
+      <a class="header-cta" href="#waitlist">Get notified</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ── Hero ─────────────────────────────────────────────── -->
+    <section class="hero">
+      <div class="wrap hero-inner">
+        <p class="eyebrow">Bring your program, or leave with one</p>
+        <h1 class="hero-title">
+          What do I do at the gym?<br />
+          <span class="hero-title-answer">SetOne tells you.</span>
+        </h1>
+        <p class="hero-sub">
+          Answer four questions. Get a program built for your equipment and
+          experience. Then log every set with one tap &mdash; from your lock
+          screen, mid&#8209;set.
+        </p>
+
+        <!-- Hero CTA: waitlist by default, App Store badge when APP_STORE_URL is set -->
+        <div class="hero-cta">
+          <form id="waitlist-form" class="waitlist" novalidate>
+            <label class="visually-hidden" for="email">Email address</label>
+            <div class="waitlist-row">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                inputmode="email"
+                autocomplete="email"
+                placeholder="you@email.com"
+                required
+                aria-describedby="waitlist-note waitlist-status"
+              />
+              <button type="submit" class="btn btn-primary" id="waitlist-submit">
+                <span class="btn-label">Get notified</span>
+                <span class="btn-arrow" aria-hidden="true">&#8599;</span>
+              </button>
+            </div>
+            <p id="waitlist-status" class="waitlist-status" role="status" aria-live="polite"></p>
+          </form>
+
+          <div id="appstore-cta" class="appstore-cta" hidden>
+            <!-- Populated by app.js when APP_STORE_URL is set. Replace the
+                 inline badge with Apple's official asset before launch. -->
+          </div>
+
+          <p id="waitlist-note" class="hero-note">
+            No spam. One email when it ships. No trackers on this page.
+          </p>
+        </div>
+      </div>
+
+      <!-- Lock-screen mockup: illustrative, built in CSS (real screenshots TBD) -->
+      <div class="hero-visual" aria-hidden="true">
+        <div class="phone">
+          <div class="phone-screen">
+            <div class="lock-time">
+              <span class="lock-date">Tuesday, March 3</span>
+              <span class="lock-clock">6:14</span>
+            </div>
+            <div class="live-activity">
+              <div class="la-head">
+                <img class="la-icon" src="assets/icon-green-1024.png" width="22" height="22" alt="" />
+                <span class="la-app">SetOne</span>
+                <span class="la-meta">Set 2 of 4</span>
+              </div>
+              <div class="la-body">
+                <span class="la-lift">Bench Press</span>
+                <span class="la-load"><span class="mono">135</span> lb &times; <span class="mono">8</span></span>
+              </div>
+              <div class="la-rest">
+                <span>Rest</span>
+                <span class="mono">1:24</span>
+                <span class="la-hr" aria-hidden="true">&#9829; 96</span>
+              </div>
+              <button class="la-log" type="button" tabindex="-1">Log set <span aria-hidden="true">&#8599;</span></button>
+            </div>
+            <div class="coach-line">
+              <span class="coach-dot" aria-hidden="true"></span>
+              Two strong sessions in a row. You earned the next plate: 140 lbs.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Feature trio ─────────────────────────────────────── -->
+    <section class="features" aria-labelledby="features-heading">
+      <div class="wrap">
+        <h2 id="features-heading" class="visually-hidden">What SetOne does</h2>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-num mono">01</span>
+            <h3 class="feature-title">A program, generated</h3>
+            <p class="feature-text">
+              No plan? Answer a few questions. SetOne builds one that fits your
+              equipment and your experience. Not a template you outgrow in a week.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature-num mono">02</span>
+            <h3 class="feature-title">Logging without the phone dance</h3>
+            <p class="feature-text">
+              Log sets from the lock screen, Dynamic Island, or Apple Watch.
+              One tap, mid&#8209;set, phone in your pocket. On the watch it's a
+              real workout: always&#8209;on, live heart rate, ring credit.
+            </p>
+          </article>
+          <article class="feature">
+            <span class="feature-num mono">03</span>
+            <h3 class="feature-title">Progression that watches the log</h3>
+            <p class="feature-text">
+              When a lift moves two sessions straight, SetOne says so and nudges
+              the weight. Quietly. No confetti.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Voice band ───────────────────────────────────────── -->
+    <section class="voice" aria-labelledby="voice-heading">
+      <div class="wrap">
+        <h2 id="voice-heading" class="section-kicker mono">The coach</h2>
+        <ul class="voice-list">
+          <li class="voice-line">One dry sentence when a lift moves. Nothing else.</li>
+          <li class="voice-line">Rest is where the muscle actually gets built. Take the day.</li>
+          <li class="voice-line">The log does not lie.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Details strip ────────────────────────────────────── -->
+    <section class="details" aria-labelledby="details-heading">
+      <div class="wrap">
+        <h2 id="details-heading" class="visually-hidden">The details</h2>
+        <ul class="detail-grid">
+          <li class="detail">
+            <span class="detail-key mono">Premium</span>
+            <span class="detail-val">30&#8209;day free trial. Cancel whenever.</span>
+          </li>
+          <li class="detail">
+            <span class="detail-key mono">Your data</span>
+            <span class="detail-val">Stays on your device. Not our servers.</span>
+          </li>
+          <li class="detail">
+            <span class="detail-key mono">CSV export</span>
+            <span class="detail-val">Free. Always. It's your log.</span>
+          </li>
+          <li class="detail">
+            <span class="detail-key mono">Heart rate</span>
+            <span class="detail-val">Turns green when you've recovered. Your watch taps you once.</span>
+          </li>
+          <li class="detail">
+            <span class="detail-key mono">Cardio</span>
+            <span class="detail-val">Runs, rides, classes, yoga. Logged in 30 seconds or imported from your watch.</span>
+          </li>
+          <li class="detail">
+            <span class="detail-key mono">Lifetime</span>
+            <span class="detail-val">Founding price through October. It goes up after.</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ── Closing CTA ──────────────────────────────────────── -->
+    <section id="waitlist" class="closing" aria-labelledby="closing-heading">
+      <div class="wrap closing-inner">
+        <p class="tagline">Every workout starts with SetOne.</p>
+        <h2 id="closing-heading" class="closing-title">Get notified when SetOne ships.</h2>
+        <form id="waitlist-form-2" class="waitlist waitlist-lg" novalidate>
+          <label class="visually-hidden" for="email-2">Email address</label>
+          <div class="waitlist-row">
+            <input
+              id="email-2"
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              placeholder="you@email.com"
+              required
+              aria-describedby="waitlist-status-2"
+            />
+            <button type="submit" class="btn btn-primary" id="waitlist-submit-2">
+              <span class="btn-label">Get notified</span>
+              <span class="btn-arrow" aria-hidden="true">&#8599;</span>
+            </button>
+          </div>
+          <p id="waitlist-status-2" class="waitlist-status" role="status" aria-live="polite"></p>
+        </form>
+        <p class="closing-note">The list hears the founding price first.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ───────────────────────────────────────────── -->
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div class="footer-brand">
+        <img src="assets/icon-green-1024.png" width="28" height="28" alt="" />
+        <span>SetOne Workout Tracker &amp; Plans</span>
+      </div>
+      <nav class="footer-links" aria-label="Footer">
+        <a href="https://zachwalton7.github.io/SetOnePrivacyPolicy/" target="_blank" rel="noopener">Privacy Policy</a>
+        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Use</a>
+        <a href="mailto:SetOneAppInfo@gmail.com">Contact</a>
+      </nav>
+      <p class="footer-legal">
+        &copy; 2026 Zach Walton. No analytics. No trackers. That's the deal.
+      </p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
