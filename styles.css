@@ -449,7 +449,7 @@ a { color: inherit; }
 
 /* ── Pledges: the maker & the dogs ──────────────────────────────────────── */
 .pledges { padding: clamp(20px, 3vw, 40px) 0 clamp(40px, 6vw, 72px); }
-.pledge-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.pledge-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .pledge {
   padding: 28px 30px 30px;
   background: var(--surface);
@@ -464,7 +464,7 @@ a { color: inherit; }
 }
 .pledge-line {
   margin: 0;
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
+  font-size: clamp(1.1rem, 1.8vw, 1.35rem);
   font-weight: 600;
   letter-spacing: -0.015em;
   line-height: 1.4;
