@@ -1,6 +1,9 @@
-# Supabase free-tier projects pause after ~1 week without API activity —
-# which would kill the waitlist silently. Two pings a week keeps the
-# project awake. Publishable key only; RLS means this can read nothing.
+# Supabase free-tier projects pause after ~1 week without DATABASE
+# activity, which kills the waitlist silently. Lesson from the Aug 19
+# pause: pinging the gateway root (/rest/v1/) does NOT count; it never
+# reaches the database, so the project paused despite green runs. The
+# ping must query a real table. Publishable key only; RLS means this
+# reads nothing. -f makes a dead project fail the run loudly.
 name: Supabase keepalive
 on:
   schedule:
@@ -10,8 +13,8 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Ping REST endpoint
+      - name: Query waitlist table (real DB activity)
         run: |
-          curl -s -o /dev/null -w "keepalive status %{http_code}\n" \
-            "https://pcupaezqkvgetnuwrtcw.supabase.co/rest/v1/" \
+          curl -sf -o /dev/null -w "keepalive status %{http_code}\n" \
+            "https://pcupaezqkvgetnuwrtcw.supabase.co/rest/v1/waitlist?select=email&limit=1" \
             -H "apikey: sb_publishable_9qztrf-FJOtSv9DBNbMQAA_ZqSpZi8N"
