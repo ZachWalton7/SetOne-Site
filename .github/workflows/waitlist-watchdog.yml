@@ -1,0 +1,44 @@
+# Waitlist watchdog. History: Supabase free-tier projects auto-pause
+# after ~7 days regardless of REST traffic (keepalive pings, even real
+# table queries, do NOT reset their clock; proven Aug 19 and Aug 31).
+# So instead of trying to prevent the pause, this detects it and
+# restores the project automatically via the Management API. Outage
+# window shrinks from days to at most a few hours.
+#
+# Requires repo secret SUPABASE_ACCESS_TOKEN (a Supabase personal
+# access token from supabase.com/dashboard/account/tokens). Until the
+# secret is set, runs no-op successfully.
+name: Waitlist watchdog
+on:
+  schedule:
+    - cron: "23 */4 * * *" # every 4 hours
+  workflow_dispatch:
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Restore project if paused
+        env:
+          SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+        run: |
+          if [ -z "$SUPABASE_ACCESS_TOKEN" ]; then
+            echo "SUPABASE_ACCESS_TOKEN secret not set yet; skipping."
+            exit 0
+          fi
+          STATUS=$(curl -sf "https://api.supabase.com/v1/projects/pcupaezqkvgetnuwrtcw" \
+            -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" | jq -r .status)
+          echo "project status: $STATUS"
+          if [ "$STATUS" != "ACTIVE_HEALTHY" ]; then
+            echo "project is $STATUS; requesting restore"
+            curl -sf -X POST "https://api.supabase.com/v1/projects/pcupaezqkvgetnuwrtcw/restore" \
+              -H "Authorization: Bearer $SUPABASE_ACCESS_TOKEN" \
+              -H "Content-Type: application/json" -d '{}'
+            echo "restore requested; next run verifies"
+          fi
+      - name: Form-path health signal (informational)
+        run: |
+          CODE=$(curl -s -o /dev/null -w "%{http_code}" --max-time 15 \
+            "https://pcupaezqkvgetnuwrtcw.supabase.co/rest/v1/waitlist?select=email&limit=1" \
+            -H "apikey: sb_publishable_9qztrf-FJOtSv9DBNbMQAA_ZqSpZi8N")
+          echo "waitlist REST status: $CODE (200 = healthy; 000/521 = restoring or paused)"
